@@ -1,6 +1,8 @@
 package com.example.replyapp.data
 
+import com.example.replyapp.data.local.LocalAccountsDataProvider
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 /*
 项目:ReplyApp
@@ -9,15 +11,15 @@ import kotlinx.coroutines.flow.Flow
 发布日期及时间: 2025/2/6  10:05
 */
 class AccountsRepositoryImpl:AccountsRepository {
-    override fun getDefaultUserAccount(): Flow<Account> {
-        TODO("Not yet implemented")
+    override fun getDefaultUserAccount(): Flow<Account>  = flow {
+        emit(LocalAccountsDataProvider.getDefaultUserAccount())
     }
 
-    override fun getAllUserAccounts(): Flow<List<Account>> {
-        TODO("Not yet implemented")
+    override fun getAllUserAccounts(): Flow<List<Account>> = flow {
+        emit(LocalAccountsDataProvider.allUserAccounts)
     }
 
-    override fun getContactAccountByUid(uid: Long): Flow<Account> {
-        TODO("Not yet implemented")
+    override fun getContactAccountByUid(uid: Long): Flow<Account> = flow {
+        emit(LocalAccountsDataProvider.getContactAccountByUid(uid))
     }
 }
