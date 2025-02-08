@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteRepositoriesConfiguration">
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Maven Central repository" />
+      <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="jboss.community" />
+      <option name="name" value="JBoss Community repository" />
+      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="65a8995e-8a5d-41af-9ef8-d6a95ace3130" />
+      <option name="name" value="65a8995e-8a5d-41af-9ef8-d6a95ace3130" />
+      <option name="url" value="https://www.jitpack.io" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="5547ac97-17b3-4950-b4ce-be946d07df07" />
+      <option name="name" value="5547ac97-17b3-4950-b4ce-be946d07df07" />
+      <option name="url" value="https://maven.aliyun.com/repository/releases" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="88a89788-8df2-452a-8487-edd52392f18c" />
+      <option name="name" value="88a89788-8df2-452a-8487-edd52392f18c" />
+      <option name="url" value="https://maven.aliyun.com/repository/google" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="b61e54db-d9a1-4922-bb1d-71ba7ccedcaa" />
+      <option name="name" value="b61e54db-d9a1-4922-bb1d-71ba7ccedcaa" />
+      <option name="url" value="https://maven.aliyun.com/repository/central" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="2beed6e2-2935-4772-adaf-e3e814d92f96" />
+      <option name="name" value="2beed6e2-2935-4772-adaf-e3e814d92f96" />
+      <option name="url" value="https://maven.aliyun.com/repository/gradle-plugin" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="820391d0-6e01-4395-ad82-869caf209866" />
+      <option name="name" value="820391d0-6e01-4395-ad82-869caf209866" />
+      <option name="url" value="https://maven.aliyun.com/repository/public" />
+    </remote-repository>
+  </component>
+</project>
