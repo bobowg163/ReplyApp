@@ -1,9 +1,12 @@
 package com.example.replyapp
 
+import androidx.compose.material3.Surface
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.window.layout.DisplayFeature
 import androidx.window.layout.FoldingFeature
@@ -55,6 +58,13 @@ fun ReplyApp(
 
     val navController = rememberNavController()
     val navigationActions = remember(navController) { ReplyNavigationActions(navController) }
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentDestination = navBackStackEntry?.destination
+
+    Surface {
+
+    }
+
 
 
 }
