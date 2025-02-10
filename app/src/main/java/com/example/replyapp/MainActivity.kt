@@ -18,6 +18,7 @@ import com.example.replyapp.data.local.LocalEmailsDataProvider
 import com.example.replyapp.model.ReplyHomeUIState
 import com.example.replyapp.model.ReplyHomeViewModel
 import com.example.replyapp.ui.theme.ReplyAppTheme
+import com.example.replyapp.ui.ReplyApp
 import com.google.accompanist.adaptive.calculateDisplayFeatures
 
 class MainActivity : ComponentActivity() {
