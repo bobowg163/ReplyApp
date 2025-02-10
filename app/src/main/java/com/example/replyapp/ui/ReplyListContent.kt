@@ -1,5 +1,11 @@
 package com.example.replyapp.ui
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
@@ -9,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.window.layout.DisplayFeature
 import com.example.replyapp.data.Email
 import com.example.replyapp.model.ReplyHomeUIState
+import com.example.replyapp.ui.components.ReplyDockedSearchBar
 import com.example.replyapp.ui.utils.ReplyContentType
 import com.example.replyapp.ui.utils.ReplyNavigationType
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
@@ -69,5 +76,13 @@ fun ReplyEmailList(
     navigateToDetail: (Long, ReplyContentType) -> Unit,
     modifier: Modifier = Modifier,
 ) {
-
+    Box(modifier = modifier.windowInsetsPadding(WindowInsets.statusBars)) {
+        ReplyDockedSearchBar(
+            emails = emails,
+            onSearchItemSelected = {searchedEmail ->
+                navigateToDetail(searchedEmail.id,ReplyContentType.SINGLE_PANE)
+            },
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 16.dp)
+        )
+    }
 }
