@@ -62,7 +62,6 @@ import androidx.window.core.layout.WindowWidthSizeClass
 import com.example.replyapp.R
 import com.example.replyapp.ui.utils.ReplyNavigationContentPosition
 import kotlinx.coroutines.launch
-
 private fun WindowSizeClass.isCompact() =
     windowWidthSizeClass == WindowWidthSizeClass.COMPACT ||
             windowHeightSizeClass == WindowHeightSizeClass.COMPACT
@@ -74,7 +73,7 @@ class ReplyNavSuiteScope(
 @Composable
 fun ReplyNavigationWrapper(
     currentDestination: NavDestination?,
-    navigateToTopLevelDestination: (ReplyToPLevelDestination) -> Unit,
+    navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
     content: @Composable ReplyNavSuiteScope.() -> Unit
 ) {
     val adaptiveInfo = currentWindowAdaptiveInfo()
@@ -160,7 +159,7 @@ fun ReplyNavigationWrapper(
 fun ReplyNavigationRail(
     currentDestination: NavDestination?,
     navigationContentPosition: ReplyNavigationContentPosition,
-    navigateToTopLevelDestination: (ReplyToPLevelDestination) -> Unit,
+    navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
     onDrawerClicked: () -> Unit = {},
 ) {
     NavigationRail(
@@ -224,7 +223,7 @@ fun ReplyNavigationRail(
 @Composable
 fun ReplyBottomNavigationBar(
     currentDestination: NavDestination?,
-    navigateToTopLevelDestination: (ReplyToPLevelDestination) -> Unit
+    navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit
 ) {
     NavigationBar(modifier = Modifier.fillMaxWidth()) {
         TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
@@ -246,7 +245,7 @@ fun ReplyBottomNavigationBar(
 fun PermanentNavigationDrawerContent(
     currentDestination: NavDestination?,
     navigationContentPosition: ReplyNavigationContentPosition,
-    navigateToTopLevelDestination: (ReplyToPLevelDestination) -> Unit,
+    navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
 ) {
     PermanentDrawerSheet(
         modifier = Modifier.sizeIn(minWidth = 200.dp, maxWidth = 300.dp),
@@ -331,7 +330,7 @@ fun PermanentNavigationDrawerContent(
 fun ModalNavigationDrawerContent(
     currentDestination: NavDestination?,
     navigationContentPosition: ReplyNavigationContentPosition,
-    navigateToTopLevelDestination: (ReplyToPLevelDestination) -> Unit,
+    navigateToTopLevelDestination: (ReplyTopLevelDestination) -> Unit,
     onDrawerClicked: () -> Unit = {}
 ) {
     ModalDrawerSheet {
@@ -466,5 +465,5 @@ enum class LayoutType {
     HEADER, CONTENT
 }
 
-fun NavDestination?.hasRoute(destination: ReplyToPLevelDestination): Boolean =
+fun NavDestination?.hasRoute(destination: ReplyTopLevelDestination): Boolean =
     this?.hasRoute(destination.route::class) ?: false

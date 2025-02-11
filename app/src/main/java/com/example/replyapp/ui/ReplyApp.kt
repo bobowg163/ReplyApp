@@ -1,6 +1,7 @@
 package com.example.replyapp.ui
 
 import androidx.compose.material3.Surface
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
@@ -30,6 +31,13 @@ import com.example.replyapp.ui.utils.isSeparating
 作者: bobo
 发布日期及时间: 2/8/25 Saturday  11:04 PM
 */
+
+private fun NavigationSuiteType.toReplyNavType() = when (this) {
+    NavigationSuiteType.NavigationBar -> ReplyNavigationType.BOTTOM_NAVIGATION
+    NavigationSuiteType.NavigationRail -> ReplyNavigationType.NAVIGATION_RAIL
+    NavigationSuiteType.NavigationDrawer -> ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
+    else -> ReplyNavigationType.BOTTOM_NAVIGATION
+}
 
 @Composable
 fun ReplyApp(
@@ -73,7 +81,16 @@ fun ReplyApp(
             currentDestination = currentDestination,
             navigateToTopLevelDestination = navigationActions::navigateTo
         ) {
-
+            ReplyNavHost(
+                navController = navController,
+                contentType = contentType,
+                displayFeatures = displayFeatures,
+                replyHomeUIState = replyHomeUIState,
+                navigationType = navSuiteType.toReplyNavType(),
+                closeDetailScreen = closeDetailScreen,
+                navigateToDetail = navigateToDetail,
+                toggleSelectedEmail = toggleSelectedEmail
+            )
         }
     }
 }
@@ -106,6 +123,16 @@ private fun ReplyNavHost(
                 toggleSelectedEmail = toggleSelectedEmail
             )
         }
+        composable<Route.DirectMessages> {
+            EmptyComingSoon()
+        }
+        composable<Route.Articles> {
+            EmptyComingSoon()
+        }
+        composable<Route.Groups> {
+            EmptyComingSoon()
+        }
 
     }
 }
+

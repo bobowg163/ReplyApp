@@ -51,17 +51,68 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
-    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
-    @Preview(showBackground = true)
-    @Composable
-    fun ReplyAppPreview() {
-        ReplyAppTheme {
-            ReplyApp(
-                replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
-                windowSize = WindowSizeClass.calculateFromSize(DpSize(400.dp, 900.dp)),
-                displayFeatures = emptyList(),
-            )
-        }
-    }
+}
 
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@Preview(showBackground = true)
+@Composable
+fun ReplyAppPreview() {
+    ReplyAppTheme {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
+            windowSize = WindowSizeClass.calculateFromSize(DpSize(400.dp, 900.dp)),
+            displayFeatures = emptyList(),
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@Preview(showBackground = true, widthDp = 700, heightDp = 500)
+@Composable
+fun ReplyAppPreviewTablet() {
+    ReplyAppTheme {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
+            windowSize = WindowSizeClass.calculateFromSize(DpSize(700.dp, 500.dp)),
+            displayFeatures = emptyList(),
+        )
+    }
+}
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@Preview(showBackground = true, widthDp = 500, heightDp = 700)
+@Composable
+fun ReplyAppPreviewTabletPortrait() {
+    ReplyAppTheme {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
+            windowSize = WindowSizeClass.calculateFromSize(DpSize(500.dp, 700.dp)),
+            displayFeatures = emptyList(),
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@Preview(showBackground = true, widthDp = 1100, heightDp = 600)
+@Composable
+fun ReplyAppPreviewDesktop() {
+    ReplyAppTheme {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
+            windowSize = WindowSizeClass.calculateFromSize(DpSize(1100.dp, 600.dp)),
+            displayFeatures = emptyList(),
+        )
+    }
+}
+
+@OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
+@Preview(showBackground = true, widthDp = 600, heightDp = 1100)
+@Composable
+fun ReplyAppPreviewDesktopPortrait() {
+    ReplyAppTheme {
+        ReplyApp(
+            replyHomeUIState = ReplyHomeUIState(emails = LocalEmailsDataProvider.allEmails),
+            windowSize = WindowSizeClass.calculateFromSize(DpSize(600.dp, 1100.dp)),
+            displayFeatures = emptyList(),
+        )
+    }
 }

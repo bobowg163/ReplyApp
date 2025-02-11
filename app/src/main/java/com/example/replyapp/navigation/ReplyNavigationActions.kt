@@ -29,7 +29,7 @@ sealed interface Route {
     data object Groups : Route
 }
 
-data class ReplyToPLevelDestination(
+data class ReplyTopLevelDestination(
     val route: Route,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
@@ -39,7 +39,7 @@ data class ReplyToPLevelDestination(
 class ReplyNavigationActions(
     private val navController: NavHostController
 ) {
-    fun navigateTo(destination: ReplyToPLevelDestination){
+    fun navigateTo(destination: ReplyTopLevelDestination){
         navController.navigate(destination.route){
             popUpTo(navController.graph.findStartDestination().id){
                 saveState = true
@@ -51,28 +51,28 @@ class ReplyNavigationActions(
 }
 
 val TOP_LEVEL_DESTINATIONS = listOf(
-    ReplyToPLevelDestination(
+    ReplyTopLevelDestination(
         route = Route.Inbox,
         selectedIcon = Icons.Default.Inbox,
         unselectedIcon = Icons.Default.Inbox,
         iconTextId = R.string.tab_inbox
     ),
 
-    ReplyToPLevelDestination(
+    ReplyTopLevelDestination(
         route = Route.Articles,
         selectedIcon = Icons.AutoMirrored.Filled.Article,
         unselectedIcon = Icons.AutoMirrored.Filled.Article,
         iconTextId = R.string.tab_article
     ),
 
-    ReplyToPLevelDestination(
+    ReplyTopLevelDestination(
         route = Route.DirectMessages,
         selectedIcon = Icons.Outlined.ChatBubbleOutline,
         unselectedIcon = Icons.Outlined.ChatBubbleOutline,
         iconTextId = R.string.tab_inbox
     ),
 
-    ReplyToPLevelDestination(
+    ReplyTopLevelDestination(
         route = Route.Groups,
         selectedIcon = Icons.Default.People,
         unselectedIcon = Icons.Default.People,
