@@ -1,13 +1,20 @@
 package com.example.replyapp.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -15,7 +22,9 @@ import androidx.compose.ui.unit.dp
 import androidx.window.layout.DisplayFeature
 import com.example.replyapp.data.Email
 import com.example.replyapp.model.ReplyHomeUIState
+import com.example.replyapp.ui.components.EmailDetailAppBar
 import com.example.replyapp.ui.components.ReplyDockedSearchBar
+import com.example.replyapp.ui.components.ReplyEmailListItem
 import com.example.replyapp.ui.utils.ReplyContentType
 import com.example.replyapp.ui.utils.ReplyNavigationType
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
@@ -79,10 +88,35 @@ fun ReplyEmailList(
     Box(modifier = modifier.windowInsetsPadding(WindowInsets.statusBars)) {
         ReplyDockedSearchBar(
             emails = emails,
-            onSearchItemSelected = {searchedEmail ->
-                navigateToDetail(searchedEmail.id,ReplyContentType.SINGLE_PANE)
+            onSearchItemSelected = { searchedEmail ->
+                navigateToDetail(searchedEmail.id, ReplyContentType.SINGLE_PANE)
             },
-            modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 16.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 16.dp)
         )
+
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 80.dp),
+            state = emailLazyListState
+        ) {
+            items(items = emails, key = { it.id }) { email ->
+                ReplyEmailListItem(
+                    email = email,
+                    navigateToDetail = { emailId ->
+                        navigateToDetail(emailId, ReplyContentType.SINGLE_PANE)
+                    },
+                    toggleSelection = toggleSelectedEmail,
+                    isSelected = selectedEmail.contains(email.id),
+                    isOpened = openedEmail?.id == email.id
+                )
+            }
+            item {
+                Spacer(modifier = Modifier.windowInsetsBottomHeight(WindowInsets.systemBars))
+            }
+        }
     }
 }
+
