@@ -25,6 +25,7 @@ import com.example.replyapp.model.ReplyHomeUIState
 import com.example.replyapp.ui.components.EmailDetailAppBar
 import com.example.replyapp.ui.components.ReplyDockedSearchBar
 import com.example.replyapp.ui.components.ReplyEmailListItem
+import com.example.replyapp.ui.components.ReplyEmailThreadItem
 import com.example.replyapp.ui.utils.ReplyContentType
 import com.example.replyapp.ui.utils.ReplyNavigationType
 import com.google.accompanist.adaptive.HorizontalTwoPaneStrategy
@@ -67,11 +68,36 @@ fun ReplyInboxScreen(
                 )
             },
             second = {
-
+                ReplyEmailDetail(
+                    email = replyHomeUIState.openedEmail ?: replyHomeUIState.emails.first(),
+                    isFullScreen = false,
+                )
             },
             strategy = HorizontalTwoPaneStrategy(splitFraction = 0.5f, gapWidth = 16.dp),
             displayFeatures = displayFeatures
         )
+    }
+}
+
+@Composable
+fun ReplyEmailDetail(
+    email: Email,
+    isFullScreen: Boolean,
+    modifier: Modifier = Modifier,
+    onBackPress: () -> Unit = {}
+) {
+    LazyColumn(
+        modifier = modifier
+            .background(MaterialTheme.colorScheme.inverseOnSurface)
+    ) {
+        item {
+            EmailDetailAppBar(email, isFullScreen) {
+                onBackPress()
+            }
+        }
+        items(items = email.threads, key = { it.id }) { email ->
+            ReplyEmailThreadItem(email = email)
+        }
     }
 }
 
