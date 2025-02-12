@@ -266,6 +266,18 @@ object LocalEmailsDataProvider {
             createdAt = "3 hours ago",
             mailbox = MailboxType.SPAM,
             threads = threads.shuffled(),
+        ),
+        Email(
+            id = 12L,
+            sender = LocalAccountsDataProvider.getContactAccountByUid(5L),
+            recipients = listOf(LocalAccountsDataProvider.getDefaultUserAccount()),
+            subject = "金 钱",
+            body = """
+           总统的重要盟友，其机构一直在秘密运作，也声称-没有证据-在美国国际开发署欺诈
+            """.trimIndent(),
+            createdAt = "3 hours ago",
+            mailbox = MailboxType.SPAM,
+            threads = threads.shuffled(),
         )
     )
 
